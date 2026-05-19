@@ -5,7 +5,7 @@
 
 **Author:** Faiz Shuja, SIRP Labs  
 **Paper:** [The Autonomous SOC Manifesto](paper/Autonomous-SOC-Manifesto-Faiz-Shuja.pdf)  
-**Published:** April 2026 | Zenodo DOI: *pending*  
+**Published:** April 2026 | https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6641798  
 **Web:** [sirp.io/manifesto](https://sirp.io/manifesto)
 
 ---
