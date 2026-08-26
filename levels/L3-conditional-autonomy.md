@@ -30,7 +30,7 @@ Every recommendation includes a full reasoning chain — the AI must be able to 
 
 ## Governance Requirements
 
-- **Confidence thresholds** — minimum confidence score required before autonomous execution
+- **Confidence thresholds** — minimum confidence score required before autonomous execution, set per action class: the break-even threshold rises with the cost of a wrong action and falls with reversibility ([MEASUREMENT.md](../MEASUREMENT.md) §3)
 - **Auditable decision traces** — every autonomous action logged with full evidence chain
 - **Action boundary definitions** — explicit policy specifying which action types may execute autonomously
 - **Continuous accuracy monitoring** — ongoing measurement of investigation quality and false positive rate

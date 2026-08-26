@@ -51,6 +51,9 @@ Detailed specifications for each level, including governance requirements, class
 - [L4 — High Autonomy (Self-Driving SOC)](levels/L4-high-autonomy.md)
 - [L5 — Full Autonomy](levels/L5-full-autonomy.md)
 
+**How to evaluate a system against these levels empirically — risk–coverage curves,
+calibration vs resolution, per-action-class thresholds:** [MEASUREMENT.md](MEASUREMENT.md)
+
 ---
 
 ## Critical Transitions
@@ -63,7 +66,7 @@ Requires: (a) contextual reasoning, (b) causal inference, (c) uncertainty quanti
 ### The Trust Threshold (L3 → L4)
 Primarily a **trust** challenge. Moving from "human approves high-impact actions" to "system acts autonomously within governance boundaries" requires:
 
-- **Calibrated confidence** — tightly calibrated against measured accuracy
+- **Calibrated, discriminating confidence** — calibration tells you whether to believe the number; **resolution** tells you whether it can gate action. Both are required — see [Measuring a system against SAF](MEASUREMENT.md)
 - **Governed boundaries** — formal policy specifications enforced architecturally
 - **Auditable decision traces** — evidence-bound, policy-validated action paths
 - **Graceful degradation** — recognition of operation outside competence

@@ -26,6 +26,7 @@ The AI handles the complete detection-to-response lifecycle for the majority of 
 | Investigation Coverage | 99%+ of alerts receive automated investigation |
 | Human Escalation Rate | <10% of incidents |
 | Confidence Calibration | Tightly calibrated against measured accuracy |
+| Confidence Resolution | Non-trivial: selective risk at operating coverage materially below full-coverage risk ([MEASUREMENT.md](../MEASUREMENT.md)) |
 
 > These are proposed operational targets, not established benchmarks.
 
@@ -35,7 +36,7 @@ L4 requires significantly more rigorous governance than L3:
 
 - **Comprehensive governance policy framework** — formal, machine-enforceable policies specifying action boundaries, escalation criteria, and prohibited actions
 - **Real-time audit logging** — immutable, complete audit trail of every autonomous action with full reasoning chain
-- **Confidence-gated execution** — architectural enforcement of confidence thresholds (not prompt-level)
+- **Confidence-gated execution** — architectural enforcement of confidence thresholds (not prompt-level), with the threshold set **per action class** from its loss asymmetry, not one value for the system ([MEASUREMENT.md](../MEASUREMENT.md) §3)
 - **Regular adversarial testing** — systematic testing of the system's response to novel attack patterns and adversarial inputs
 - **Formal boundary enforcement** — governance policies enforced at the architecture level, not through model instruction
 - **Graceful degradation protocol** — defined behaviour when the system operates outside its competence envelope
@@ -46,7 +47,7 @@ The transition from L3 to L4 is primarily a **trust** challenge, not a capabilit
 
 This requires four properties:
 
-**(a) Calibrated confidence** — The system's stated confidence must be empirically accurate. If it says 95% confident, it must be wrong approximately 5% of the time. Systematic overconfidence at L4 produces autonomous errors at scale.
+**(a) Calibrated, discriminating confidence** — The system's stated confidence must be empirically accurate (if it says 95%, it is wrong ~5% of the time) **and must discriminate its hard cases from its easy ones**. Calibration alone is insufficient: a system reporting one honest confidence value on every case is perfectly calibrated and impossible to threshold — it can act on everything or nothing, never on only what it is good at. The formal requirement is non-trivial **resolution** (see [MEASUREMENT.md](../MEASUREMENT.md) §1), evidenced by a risk–coverage curve rather than an accuracy point estimate. Systematic overconfidence at L4 produces autonomous errors at scale; non-discriminating confidence produces them at *full* scale.
 
 **(b) Governed boundaries** — Action boundaries must be specified with sufficient precision for machine enforcement. "Don't take high-impact actions" is not a governed boundary. "Do not execute any action affecting more than N assets or impacting availability of Tier-1 systems without human approval" is.
 
